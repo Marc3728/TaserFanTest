@@ -1,7 +1,11 @@
 package com.example.taserfantest.API;
 
 
+import com.example.taserfantest.Vehiculo;
+
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 
 import okhttp3.RequestBody;
@@ -32,6 +36,7 @@ public class CallMethods<T>  {
         }
         return null;
     }
+
     public Response<ResponseBody> getResult(String url){
         Call<ResponseBody> call = service.getCall(url);
         try {

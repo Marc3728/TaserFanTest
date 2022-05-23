@@ -39,26 +39,13 @@
         app:layout_constraintStart_toEndOf="@+id/modelvehiculo"
         app:layout_constraintTop_toTopOf="@+id/modelvehiculo" />
 
-    <TextView
-        android:id="@+id/estadovehiculo"
+    <ImageView
+        android:id="@+id/imagestate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="TextView"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="@+id/modelvehiculo"
-        app:layout_constraintStart_toStartOf="@+id/modelvehiculo"
-        app:layout_constraintTop_toBottomOf="@+id/modelvehiculo" />
+        app:layout_constraintEnd_toEndOf="@+id/imagevehicle"
+        app:layout_constraintStart_toStartOf="@+id/imagevehicle"
+        app:layout_constraintTop_toBottomOf="@+id/imagevehicle"
+        app:srcCompat="@drawable/ic_baseline_circle_24" />
 
-    <TextView
-        android:id="@+id/colorvehiculo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="TextView"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="@+id/matriculavehiculo"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/matriculavehiculo"
-        app:layout_constraintTop_toBottomOf="@+id/matriculavehiculo" />
 </androidx.constraintlayout.widget.ConstraintLayout>

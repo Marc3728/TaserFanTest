@@ -33,6 +33,34 @@ public class Connector {
         return null;
     }
 
+    public <T> List<T> postAsList(Class<T> clazz,Object data, String path) {
+        try {
+            String url = API.Routes.URL + path;
+            String jsonObject = conversor.toJson(data);
+            RequestBody body = RequestBody.create(MediaType.parse("application/json"), jsonObject);
+            Response<ResponseBody> jsonResponse = callMethodsObject.postResult(url, body);
+            if (jsonResponse != null)
+                return conversor.fromJsonList(jsonResponse.body().string(), clazz);
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    public <T> boolean eliminaVehiculo(Class<T> clazz,Object data, String path) {
+
+            String url = API.Routes.URL + path;
+            String jsonObject = conversor.toJson(data);
+            RequestBody body = RequestBody.create(MediaType.parse("application/json"), jsonObject);
+            Response<ResponseBody> jsonResponse = callMethodsObject.postResult(url, body);
+            if (jsonResponse != null && jsonResponse.code() == 200)
+                return true;
+            else
+                return false;
+
+    }
+
 
 //    public <T> T get(Class<T> clazz, String path) {
 //        String url = API.Routes.URL + path;

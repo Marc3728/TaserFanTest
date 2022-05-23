@@ -13,6 +13,9 @@
         android:theme="@style/Theme.TaserFanTest"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".InsertarVehiculo"
+            android:exported="false" />
+        <activity
             android:name=".PreferencesActivity"
             android:exported="false" />
         <activity

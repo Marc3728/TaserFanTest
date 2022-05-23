@@ -1,16 +1,18 @@
 package com.example.taserfantest;
 
-public class Vehicle {
+public class Vehiculo {
     private String modelo;
     private String matricula;
     private String estado;
     private String color;
+    private TipoVehiculo tipo;
 
-    public Vehicle(String modelo, String matricula, String estado, String color) {
+    public Vehiculo(String modelo, String matricula, String estado, String color, TipoVehiculo tipo) {
         this.modelo = modelo;
         this.matricula = matricula;
         this.estado = estado;
         this.color = color;
+        this.tipo = tipo;
     }
 
     public String getModelo() {
@@ -43,5 +45,13 @@ public class Vehicle {
 
     public void setColor(String color) {
         this.color = color;
+    }
+
+    public TipoVehiculo getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(TipoVehiculo tipo) {
+        this.tipo = tipo;
     }
 }
