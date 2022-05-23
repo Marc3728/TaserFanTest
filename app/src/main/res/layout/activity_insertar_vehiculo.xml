@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".InsertarVehiculo">
+
+    <Spinner
+        android:id="@+id/spinnerinserciontipos"
+        android:layout_width="409dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/anadirvehiculob"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ANADIR"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.337"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerinserciontipos"
+        app:layout_constraintVertical_bias="0.88" />
+
+    <Button
+        android:id="@+id/cancelaranadirvehiculob"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="CANCELAR"
+        app:layout_constraintBottom_toBottomOf="@+id/anadirvehiculob"
+        app:layout_constraintStart_toEndOf="@+id/anadirvehiculob"
+        app:layout_constraintTop_toTopOf="@+id/anadirvehiculob" />
+
+    <ScrollView
+        android:layout_width="322dp"
+        android:layout_height="385dp"
+        app:layout_constraintBottom_toTopOf="@+id/anadirvehiculob"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerinserciontipos">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:padding="5dp">
+
+                <TextView
+                    android:id="@+id/Matriculains"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Matricula" />
+
+                <EditText
+                    android:id="@+id/matriculatxti"
+                    android:layout_width="202dp"
+                    android:layout_height="41dp"
+                    android:ems="10"
+                    android:inputType="textPersonName" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:padding="5dp">
+
+                <TextView
+                    android:id="@+id/preciohorains"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="PrecioHora" />
+
+                <EditText
+                    android:id="@+id/phtxti"
+                    android:layout_width="204dp"
+                    android:layout_height="41dp"
+                    android:ems="10"
+                    android:inputType="textPersonName" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:padding="5dp">
+
+                <TextView
+                    android:id="@+id/marcains"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Marca" />
+
+                <EditText
+                    android:id="@+id/marcatxti"
+                    android:layout_width="158dp"
+                    android:layout_height="41dp"
+                    android:ems="10"
+                    android:inputType="textPersonName" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:padding="5dp">
+
+                <TextView
+                    android:id="@+id/descripcionins"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Descripcion" />
+
+                <EditText
+                    android:id="@+id/desctxti"
+                    android:layout_width="143dp"
+                    android:layout_height="41dp"
+                    android:ems="10"
+                    android:inputType="textPersonName" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:padding="5dp">
+
+                <TextView
+                    android:id="@+id/colorins"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Color" />
+
+                <EditText
+                    android:id="@+id/colortxti"
+                    android:layout_width="143dp"
+                    android:layout_height="41dp"
+                    android:ems="10"
+                    android:inputType="textPersonName" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:padding="5dp">
+
+                <TextView
+                    android:id="@+id/bateriains"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Bateria" />
+
+                <EditText
+                    android:id="@+id/bateriatxti"
+                    android:layout_width="143dp"
+                    android:layout_height="41dp"
+                    android:ems="10"
+                    android:inputType="textPersonName" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:padding="5dp">
+
+                <TextView
+                    android:id="@+id/fechaadqins"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="fechaAdq" />
+
+                <EditText
+                    android:id="@+id/fechaadqtxti"
+                    android:layout_width="143dp"
+                    android:layout_height="41dp"
+                    android:ems="10"
+                    android:inputType="textPersonName" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:padding="5dp">
+
+                <TextView
+                    android:id="@+id/estadoins"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="estado" />
+
+                <EditText
+                    android:id="@+id/estadotxti"
+                    android:layout_width="143dp"
+                    android:layout_height="41dp"
+                    android:ems="10"
+                    android:inputType="textPersonName" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:padding="5dp">
+
+                <TextView
+                    android:id="@+id/tipocarnetins"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TipoCarnet" />
+
+                <EditText
+                    android:id="@+id/tipocarnettxti"
+                    android:layout_width="143dp"
+                    android:layout_height="41dp"
+                    android:ems="10"
+                    android:inputType="textPersonName" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:padding="5dp">
+
+                <TextView
+                    android:id="@+id/numplazasins"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="NumPlazas" />
+
+                <EditText
+                    android:id="@+id/auxuntxti"
+                    android:layout_width="143dp"
+                    android:layout_height="41dp"
+                    android:ems="10"
+                    android:inputType="textPersonName" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:padding="5dp">
+
+                <TextView
+                    android:id="@+id/numpuertasins"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="NumPuertas" />
+
+                <EditText
+                    android:id="@+id/auxdostxti"
+                    android:layout_width="143dp"
+                    android:layout_height="41dp"
+                    android:ems="10"
+                    android:inputType="textPersonName" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
