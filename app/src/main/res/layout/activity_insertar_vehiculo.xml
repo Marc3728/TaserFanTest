@@ -141,12 +141,11 @@
                     android:layout_height="wrap_content"
                     android:text="Color" />
 
-                <EditText
+                <Spinner
                     android:id="@+id/colortxti"
-                    android:layout_width="143dp"
-                    android:layout_height="41dp"
-                    android:ems="10"
-                    android:inputType="textPersonName" />
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
             </LinearLayout>
 
             <LinearLayout
@@ -201,12 +200,11 @@
                     android:layout_height="wrap_content"
                     android:text="estado" />
 
-                <EditText
+                <Spinner
                     android:id="@+id/estadotxti"
-                    android:layout_width="143dp"
-                    android:layout_height="41dp"
-                    android:ems="10"
-                    android:inputType="textPersonName" />
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
 
             </LinearLayout>
 

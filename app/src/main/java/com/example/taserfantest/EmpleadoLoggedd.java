@@ -15,6 +15,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.taserfantest.API.Connector;
 import com.example.taserfantest.base.BaseActivity;
@@ -36,6 +37,19 @@ public class EmpleadoLoggedd extends BaseActivity implements CallInterface, View
     private final int correctinsert = 1234;
     private final int canceledinsert = 4321;
     private final int MIUB_CODE = 1212;
+
+    private String matricula;
+    private String preciohora;
+    private String marca;
+    private String descripcion;
+    private double bateria;
+    private String fechaadq;
+    private String colorsel;
+    private String estadosel;
+    private String tipocarnet;
+    private String auxun;
+    private String auxdos;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -141,10 +155,13 @@ public class EmpleadoLoggedd extends BaseActivity implements CallInterface, View
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode==RESULT_OK){
+        if (requestCode==MIUB_CODE){
+            if (resultCode==RESULT_OK){
+                matricula = data.getStringExtra("matricula");
+                Toast.makeText(getApplicationContext(),"matricula:" + matricula,Toast.LENGTH_SHORT).show();
+            } else if(resultCode==RESULT_CANCELED){
 
-        } else if(resultCode==RESULT_CANCELED){
-
+            }
         }
     }
 
