@@ -13,6 +13,12 @@
         android:theme="@style/Theme.TaserFanTest"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".DatosVehiculoEspecifico"
+            android:exported="false" />
+        <activity
+            android:name=".UpdatearVehiculo"
+            android:exported="false" />
+        <activity
             android:name=".InsertarVehiculo"
             android:exported="false" />
         <activity

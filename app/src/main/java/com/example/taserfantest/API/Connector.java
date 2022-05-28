@@ -121,6 +121,22 @@ public class Connector {
         return null;
     }
 
+    public <T> Result<T> selVehiculo(Class<T> clazz, String data, String path) {
+        try {
+            String url = API.Routes.URL + path + "?matricula=" + data;
+            Response<ResponseBody> jsonResponse = callMethodsObject.getResult(url);
+            if (jsonResponse != null && jsonResponse.code() == 200)
+                return conversor.fromJSonToSuccess(jsonResponse.body().string(), clazz);
+            else if (jsonResponse != null)
+
+                return conversor.getError(jsonResponse.errorBody().string());
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 
 
     public <T> Result<T> put(Class<T> clazz, T data, String path) {
@@ -144,6 +160,21 @@ public class Connector {
     public <T> Result<T> delete(Class<T> clazz, String path) {
         try {
             String url = API.Routes.URL + path;
+            Response<ResponseBody> jsonResponse = callMethodsObject.deleteResult(url);
+            if (jsonResponse != null && jsonResponse.code() == 200)
+                return conversor.fromJSonToSuccess(jsonResponse.body().string(), clazz);
+            else if (jsonResponse != null) {
+                return conversor.getError(jsonResponse.errorBody().string());
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public <T> Result<T> deleteVehiculo(Class<T> clazz, String data, String path) {
+        try {
+            String url = API.Routes.URL + path + "?matricula=" + data;
             Response<ResponseBody> jsonResponse = callMethodsObject.deleteResult(url);
             if (jsonResponse != null && jsonResponse.code() == 200)
                 return conversor.fromJSonToSuccess(jsonResponse.body().string(), clazz);

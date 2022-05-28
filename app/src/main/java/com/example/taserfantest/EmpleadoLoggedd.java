@@ -18,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.taserfantest.API.Connector;
+import com.example.taserfantest.API.Result;
 import com.example.taserfantest.base.BaseActivity;
 import com.example.taserfantest.base.CallInterface;
 
@@ -38,6 +39,8 @@ public class EmpleadoLoggedd extends BaseActivity implements CallInterface, View
     private final int canceledinsert = 4321;
     private final int MIUB_CODE = 1212;
 
+    private final int UPDT_CODE = 2121;
+
     private String matricula;
     private String preciohora;
     private String marca;
@@ -50,6 +53,9 @@ public class EmpleadoLoggedd extends BaseActivity implements CallInterface, View
     private String auxun;
     private String auxdos;
 
+    private Vehiculo vehiculoeliminar;
+    private EliminaVehiuclo eliminaVehiuclo;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,6 +64,7 @@ public class EmpleadoLoggedd extends BaseActivity implements CallInterface, View
         spinner = findViewById(R.id.spinnertipo);
         tipoVehiculo = TipoVehiculo.TODOS;
         anadirvehiculo = findViewById(R.id.anadirvehiculo);
+        eliminaVehiuclo = new EliminaVehiuclo();
         vehiculos = new ArrayList<Vehiculo>();
         myRecyclerViewAdapter = new MyRecyclerViewAdapter(this, vehiculos);
         myRecyclerViewAdapter.setListener(this);
@@ -86,7 +93,7 @@ public class EmpleadoLoggedd extends BaseActivity implements CallInterface, View
             }
         });
 
-        ItemTouchHelper.SimpleCallback sck = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
+        ItemTouchHelper.SimpleCallback sck = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
             @Override
             public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
                 return false;
@@ -94,8 +101,23 @@ public class EmpleadoLoggedd extends BaseActivity implements CallInterface, View
 
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-                vehiculos.remove(viewHolder.getAdapterPosition());
-                myRecyclerViewAdapter.notifyItemRemoved(viewHolder.getAdapterPosition());
+                switch (direction){
+                    case ItemTouchHelper.LEFT:
+                        vehiculoeliminar = vehiculos.get(viewHolder.getAdapterPosition());
+                        //vehiculos.remove(viewHolder.getAdapterPosition());
+                        //myRecyclerViewAdapter.notifyItemRemoved(viewHolder.getAdapterPosition());
+                        eliminaVehiuclo.setVehiculo(vehiculoeliminar);
+                        eliminaVehiuclo.ejecuta();
+                        vehiculos.remove(viewHolder.getAdapterPosition());
+                        myRecyclerViewAdapter.notifyItemRemoved(viewHolder.getAdapterPosition());
+                        break;
+                    case ItemTouchHelper.RIGHT:
+                        Intent intent = new Intent(getApplicationContext(),UpdatearVehiculo.class);
+                        intent.putExtra("matr",vehiculos.get(viewHolder.getAdapterPosition()).getMatricula());
+                        intent.putExtra("tip",vehiculos.get(viewHolder.getAdapterPosition()).getTipo().toString());
+                        startActivityForResult(intent,UPDT_CODE);
+                        finish();
+                }
             }
         };
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(sck);
@@ -165,16 +187,42 @@ public class EmpleadoLoggedd extends BaseActivity implements CallInterface, View
         }
     }
 
-    public class EliminaVehiuclo implements CallInterface{
+    public class EliminaVehiuclo extends BaseActivity implements CallInterface{
+
+        private Result result;
+        private Vehiculo vehiculo;
+        public void ejecuta(){
+            executeCall(EliminaVehiuclo.this);
+        }
 
         @Override
         public void doInBackground() {
-
+            switch (vehiculo.getTipo()){
+                case COCHE:
+                    result = Connector.getConector().deleteVehiculo(String.class, vehiculo.getMatricula(), "/coche");
+                    break;
+                case MOTO:
+                    result = Connector.getConector().deleteVehiculo(String.class, vehiculo.getMatricula(), "/moto");
+                    break;
+                case BICICLETA:
+                    result = Connector.getConector().deleteVehiculo(String.class, vehiculo.getMatricula(), "/bicicleta");
+                    break;
+                case PATINETE:
+                    result = Connector.getConector().deleteVehiculo(String.class, vehiculo.getMatricula(), "/patinete");
+            }
         }
 
         @Override
         public void doInUI() {
 
+        }
+
+        public void setVehiculo(Vehiculo vehiculo) {
+            this.vehiculo = vehiculo;
+        }
+
+        public Result getResult() {
+            return result;
         }
     }
 }

@@ -1,7 +1,5 @@
 package com.example.taserfantest;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -52,8 +50,8 @@ public class InsertarVehiculo extends BaseActivity implements CallInterface {
         auxdos = findViewById(R.id.numpuertasins);
         auxunot = findViewById(R.id.auxuntxti);
         auxdost = findViewById(R.id.auxdostxti);
-        anadirv = findViewById(R.id.anadirvehiculob);
-        cancelarv = findViewById(R.id.cancelaranadirvehiculob);
+        anadirv = findViewById(R.id.anadirvehiculo);
+        cancelarv = findViewById(R.id.cancelaranadirvehiculo);
         matricula = findViewById(R.id.matriculatxti);
         preciohora = findViewById(R.id.phtxti);
         marca = findViewById(R.id.marcatxti);
@@ -166,16 +164,16 @@ public class InsertarVehiculo extends BaseActivity implements CallInterface {
     public void doInBackground() {
         switch (seleccionado){
             case COCHE:
-                result = Connector.getConector().post(Coche.class,new Coche(matricula.getText().toString(),Double.parseDouble(preciohora.getText().toString()),marca.getText().toString(),descripcion.getText().toString(),colorsel,Double.parseDouble(bateria.getText().toString()),fechaadq.getText().toString(),estadosel,tipocarnet.getText().toString(),Integer.parseInt(auxunot.getText().toString()),Integer.parseInt(auxdost.getText().toString())),"/insertc");
+                result = Connector.getConector().post(Coche.class,new Coche(matricula.getText().toString(),Double.parseDouble(preciohora.getText().toString()),marca.getText().toString(),descripcion.getText().toString(),colorsel,Double.parseDouble(bateria.getText().toString()),fechaadq.getText().toString(),estadosel,tipocarnet.getText().toString(),Integer.parseInt(auxunot.getText().toString()),Integer.parseInt(auxdost.getText().toString())),"/coche");
                 break;
             case MOTO:
-                result = Connector.getConector().post(Moto.class,new Moto(matricula.getText().toString(),Double.parseDouble(preciohora.getText().toString()),marca.getText().toString(),descripcion.getText().toString(),colorsel,Double.parseDouble(bateria.getText().toString()),fechaadq.getText().toString(),estadosel,tipocarnet.getText().toString(),Double.parseDouble(auxunot.getText().toString()),Double.parseDouble(auxdost.getText().toString())),"/insertm");
+                result = Connector.getConector().post(Moto.class,new Moto(matricula.getText().toString(),Double.parseDouble(preciohora.getText().toString()),marca.getText().toString(),descripcion.getText().toString(),colorsel,Double.parseDouble(bateria.getText().toString()),fechaadq.getText().toString(),estadosel,tipocarnet.getText().toString(),Double.parseDouble(auxunot.getText().toString()),Double.parseDouble(auxdost.getText().toString())),"/moto");
                 break;
             case BICICLETA:
-                result = Connector.getConector().post(Bicicleta.class,new Bicicleta(matricula.getText().toString(),Double.parseDouble(preciohora.getText().toString()),marca.getText().toString(),descripcion.getText().toString(),colorsel,Double.parseDouble(bateria.getText().toString()),fechaadq.getText().toString(),estadosel,tipocarnet.getText().toString(),Double.parseDouble(auxunot.getText().toString()),Integer.parseInt(auxdost.getText().toString())),"/insertb");
+                result = Connector.getConector().post(Bicicleta.class,new Bicicleta(matricula.getText().toString(),Double.parseDouble(preciohora.getText().toString()),marca.getText().toString(),descripcion.getText().toString(),colorsel,Double.parseDouble(bateria.getText().toString()),fechaadq.getText().toString(),estadosel,tipocarnet.getText().toString(),auxunot.getText().toString()),"/bicicleta");
                 break;
             case PATINETE:
-                result = Connector.getConector().post(Patinete.class,new Patinete(matricula.getText().toString(),Double.parseDouble(preciohora.getText().toString()),marca.getText().toString(),descripcion.getText().toString(),colorsel,Double.parseDouble(bateria.getText().toString()),fechaadq.getText().toString(),estadosel,tipocarnet.getText().toString(),auxunot.getText().toString()),"/insertp");
+                result = Connector.getConector().post(Patinete.class,new Patinete(matricula.getText().toString(),Double.parseDouble(preciohora.getText().toString()),marca.getText().toString(),descripcion.getText().toString(),colorsel,Double.parseDouble(bateria.getText().toString()),fechaadq.getText().toString(),estadosel,tipocarnet.getText().toString(),Double.parseDouble(auxunot.getText().toString()),Integer.parseInt(auxdost.getText().toString())),"/patinete");
 
         }
     }

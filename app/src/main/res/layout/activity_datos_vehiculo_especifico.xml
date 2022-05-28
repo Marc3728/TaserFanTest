@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DatosVehiculoEspecifico">
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_launcher_background" />
+
+    <TextView
+        android:id="@+id/matriculainfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+        app:layout_constraintStart_toEndOf="@+id/imageView2"
+        app:layout_constraintTop_toTopOf="@+id/imageView2" />
+
+    <TextView
+        android:id="@+id/marcainfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/matriculainfo"
+        app:layout_constraintStart_toEndOf="@+id/matriculainfo"
+        app:layout_constraintTop_toTopOf="@+id/matriculainfo" />
+
+    <TextView
+        android:id="@+id/fechaadqinfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="@+id/matriculainfo"
+        app:layout_constraintStart_toStartOf="@+id/matriculainfo"
+        app:layout_constraintTop_toBottomOf="@+id/matriculainfo" />
+
+    <TextView
+        android:id="@+id/carnetinfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/fechaadqinfo"
+        app:layout_constraintStart_toEndOf="@+id/fechaadqinfo"
+        app:layout_constraintTop_toTopOf="@+id/fechaadqinfo"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/phinfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:text="PrecioHora"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+    <TextView
+        android:id="@+id/prhrinfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/phinfo"
+        app:layout_constraintStart_toEndOf="@+id/phinfo"
+        app:layout_constraintTop_toTopOf="@+id/phinfo" />
+
+    <TextView
+        android:id="@+id/batrinfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:text="Bateria"
+        app:layout_constraintBottom_toBottomOf="@+id/prhrinfo"
+        app:layout_constraintStart_toEndOf="@+id/prhrinfo"
+        app:layout_constraintTop_toTopOf="@+id/prhrinfo" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/batrinfo"
+        app:layout_constraintStart_toEndOf="@+id/batrinfo"
+        app:layout_constraintTop_toTopOf="@+id/batrinfo"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/descinfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="@+id/textauxun"
+        app:layout_constraintStart_toStartOf="@+id/textauxun"
+        app:layout_constraintTop_toBottomOf="@+id/textauxun" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/matriculainfo"
+        app:layout_constraintEnd_toEndOf="@+id/matriculainfo"
+        app:layout_constraintStart_toStartOf="@+id/matriculainfo"
+        app:srcCompat="@drawable/ic_baseline_circle_24" />
+
+    <TextView
+        android:id="@+id/textauxun"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="196dp" />
+
+    <TextView
+        android:id="@+id/auxuninfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/textauxun"
+        app:layout_constraintStart_toEndOf="@+id/textauxun"
+        app:layout_constraintTop_toTopOf="@+id/textauxun" />
+
+    <TextView
+        android:id="@+id/textauxdos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/auxuninfo"
+        app:layout_constraintStart_toEndOf="@+id/auxuninfo"
+        app:layout_constraintTop_toTopOf="@+id/auxuninfo" />
+
+    <TextView
+        android:id="@+id/auxdosinfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/textauxdos"
+        app:layout_constraintStart_toEndOf="@+id/textauxdos"
+        app:layout_constraintTop_toTopOf="@+id/textauxdos" />
+</androidx.constraintlayout.widget.ConstraintLayout>

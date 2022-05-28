@@ -4,45 +4,37 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".InsertarVehiculo">
-
-    <Spinner
-        android:id="@+id/spinnerinserciontipos"
-        android:layout_width="409dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    tools:context=".UpdatearVehiculo">
 
     <Button
-        android:id="@+id/anadirvehiculo"
+        android:id="@+id/updatearvehiculou"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="ANADIR"
+        android:layout_marginBottom="40dp"
+        android:text="UPDATEAR"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.337"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerinserciontipos"
-        app:layout_constraintVertical_bias="0.88" />
+        app:layout_constraintHorizontal_bias="0.248"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/cancelaranadirvehiculo"
+        android:id="@+id/cancelaranadirvehiculou"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="36dp"
         android:text="CANCELAR"
-        app:layout_constraintBottom_toBottomOf="@+id/anadirvehiculo"
-        app:layout_constraintStart_toEndOf="@+id/anadirvehiculo"
-        app:layout_constraintTop_toTopOf="@+id/anadirvehiculo" />
+        app:layout_constraintBottom_toBottomOf="@+id/updatearvehiculou"
+        app:layout_constraintStart_toEndOf="@+id/updatearvehiculou"
+        app:layout_constraintTop_toTopOf="@+id/updatearvehiculou"
+        app:layout_constraintVertical_bias="0.0" />
 
     <ScrollView
         android:layout_width="322dp"
         android:layout_height="385dp"
-        app:layout_constraintBottom_toTopOf="@+id/anadirvehiculo"
+        android:layout_marginTop="32dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerinserciontipos">
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -56,13 +48,13 @@
                 android:padding="5dp">
 
                 <TextView
-                    android:id="@+id/Matriculains"
+                    android:id="@+id/Matriculaupd"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Matricula" />
 
                 <EditText
-                    android:id="@+id/matriculatxti"
+                    android:id="@+id/matriculatxtu"
                     android:layout_width="202dp"
                     android:layout_height="41dp"
                     android:ems="10"
@@ -76,13 +68,13 @@
                 android:padding="5dp">
 
                 <TextView
-                    android:id="@+id/preciohorains"
+                    android:id="@+id/preciohoraupd"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="PrecioHora" />
 
                 <EditText
-                    android:id="@+id/phtxti"
+                    android:id="@+id/phtxtu"
                     android:layout_width="204dp"
                     android:layout_height="41dp"
                     android:ems="10"
@@ -96,13 +88,13 @@
                 android:padding="5dp">
 
                 <TextView
-                    android:id="@+id/marcains"
+                    android:id="@+id/marcaupd"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Marca" />
 
                 <EditText
-                    android:id="@+id/marcatxti"
+                    android:id="@+id/marcatxtu"
                     android:layout_width="158dp"
                     android:layout_height="41dp"
                     android:ems="10"
@@ -116,13 +108,13 @@
                 android:padding="5dp">
 
                 <TextView
-                    android:id="@+id/descripcionins"
+                    android:id="@+id/descripcionupd"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Descripcion" />
 
                 <EditText
-                    android:id="@+id/desctxti"
+                    android:id="@+id/desctxtu"
                     android:layout_width="143dp"
                     android:layout_height="41dp"
                     android:ems="10"
@@ -136,13 +128,13 @@
                 android:padding="5dp">
 
                 <TextView
-                    android:id="@+id/colorins"
+                    android:id="@+id/colorupd"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Color" />
 
                 <Spinner
-                    android:id="@+id/colortxti"
+                    android:id="@+id/colortxtu"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1" />
@@ -155,13 +147,13 @@
                 android:padding="5dp">
 
                 <TextView
-                    android:id="@+id/bateriains"
+                    android:id="@+id/bateriaupd"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Bateria" />
 
                 <EditText
-                    android:id="@+id/bateriatxti"
+                    android:id="@+id/bateriatxtu"
                     android:layout_width="143dp"
                     android:layout_height="41dp"
                     android:ems="10"
@@ -175,13 +167,13 @@
                 android:padding="5dp">
 
                 <TextView
-                    android:id="@+id/fechaadqins"
+                    android:id="@+id/fechaadqupd"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="fechaAdq" />
 
                 <EditText
-                    android:id="@+id/fechaadqtxti"
+                    android:id="@+id/fechaadqtxtu"
                     android:layout_width="143dp"
                     android:layout_height="41dp"
                     android:ems="10"
@@ -195,13 +187,13 @@
                 android:padding="5dp">
 
                 <TextView
-                    android:id="@+id/estadoins"
+                    android:id="@+id/estadoupd"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="estado" />
 
                 <Spinner
-                    android:id="@+id/estadotxti"
+                    android:id="@+id/estadotxtu"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1" />
@@ -215,13 +207,13 @@
                 android:padding="5dp">
 
                 <TextView
-                    android:id="@+id/tipocarnetins"
+                    android:id="@+id/tipocarnetupd"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="TipoCarnet" />
 
                 <EditText
-                    android:id="@+id/tipocarnettxti"
+                    android:id="@+id/tipocarnettxtu"
                     android:layout_width="143dp"
                     android:layout_height="41dp"
                     android:ems="10"
@@ -235,13 +227,13 @@
                 android:padding="5dp">
 
                 <TextView
-                    android:id="@+id/numplazasins"
+                    android:id="@+id/numplazasupd"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="NumPlazas" />
 
                 <EditText
-                    android:id="@+id/auxuntxti"
+                    android:id="@+id/auxuntxtu"
                     android:layout_width="143dp"
                     android:layout_height="41dp"
                     android:ems="10"
@@ -255,13 +247,13 @@
                 android:padding="5dp">
 
                 <TextView
-                    android:id="@+id/numpuertasins"
+                    android:id="@+id/numpuertasupd"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="NumPuertas" />
 
                 <EditText
-                    android:id="@+id/auxdostxti"
+                    android:id="@+id/auxdostxtu"
                     android:layout_width="143dp"
                     android:layout_height="41dp"
                     android:ems="10"
