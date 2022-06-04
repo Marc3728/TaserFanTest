@@ -2,8 +2,10 @@ package com.example.taserfantest;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
@@ -97,17 +99,43 @@ public class UpdatearVehiculo extends BaseActivity implements CallInterface {
         estados.setAdapter(adapterest);
         executeCall(this);
 
+        colores.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                colorsel = colores.getSelectedItem().toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+                colorsel = Colores.blanco.toString();
+            }
+        });
+
+        estados.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                estadosel = estados.getSelectedItem().toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+                estadosel = Estados.alquilado.toString();
+            }
+        });
+
         anadirv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                executeCall(UpdatearVehiculo.this);
             }
         });
 
         cancelarv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent();
+                setResult(RESULT_CANCELED);
+                finish();
             }
         });
     }
@@ -127,6 +155,24 @@ public class UpdatearVehiculo extends BaseActivity implements CallInterface {
                     break;
                 case PATINETE:
                     result = Connector.getConector().selVehiculo(Patinete.class,matr,"/patinete");
+            }
+        } else {
+            switch (tipoVehiculo){
+                case COCHE:
+                    Coche cop = new Coche(matricula.getText().toString(),Double.parseDouble(preciohora.getText().toString()),marca.getText().toString(),descripcion.getText().toString(),colorsel,Double.parseDouble(bateria.getText().toString()),fechaadq.getText().toString(),estadosel,tipocarnet.getText().toString(),Integer.parseInt(auxunot.getText().toString()),Integer.parseInt(auxdost.getText().toString()));
+                    result = Connector.getConector().put(Coche.class,cop,"/coche");
+                    break;
+                case MOTO:
+                    Moto mop = new Moto(matricula.getText().toString(),Double.parseDouble(preciohora.getText().toString()),marca.getText().toString(),descripcion.getText().toString(),colorsel,Double.parseDouble(bateria.getText().toString()),fechaadq.getText().toString(),estadosel,tipocarnet.getText().toString(),Double.parseDouble(auxunot.getText().toString()),Double.parseDouble(auxdost.getText().toString()));
+                    result = Connector.getConector().put(Moto.class,mop,"/moto");
+                    break;
+                case BICICLETA:
+                    Bicicleta bip = new Bicicleta(matricula.getText().toString(),Double.parseDouble(preciohora.getText().toString()),marca.getText().toString(),descripcion.getText().toString(),colorsel,Double.parseDouble(bateria.getText().toString()),fechaadq.getText().toString(),estadosel,tipocarnet.getText().toString(),auxunot.getText().toString());
+                    result = Connector.getConector().put(Bicicleta.class,bip,"/bicicleta");
+                    break;
+                case PATINETE:
+                    Patinete pap = new Patinete(matricula.getText().toString(),Double.parseDouble(preciohora.getText().toString()),marca.getText().toString(),descripcion.getText().toString(),colorsel,Double.parseDouble(bateria.getText().toString()),fechaadq.getText().toString(),estadosel,tipocarnet.getText().toString(),Double.parseDouble(auxunot.getText().toString()),Integer.parseInt(auxdost.getText().toString()));
+                    result = Connector.getConector().put(Patinete.class,pap,"/patinete");
             }
         }
     }
@@ -203,8 +249,45 @@ public class UpdatearVehiculo extends BaseActivity implements CallInterface {
                         auxunot.setText(String.valueOf(resultadop.getTamano()));
                         auxdost.setText(String.valueOf(resultadop.getRuedas()));
                 }
+                switch (Integer.parseInt(tipocarnet.getText().toString())){
+                    case 0:
+                        tipocarnet.setText("NO");
+                        break;
+                    case 1:
+                        tipocarnet.setText("AM");
+                        break;
+                    case 2:
+                        tipocarnet.setText("A");
+                        break;
+                    case 3:
+                        tipocarnet.setText("B");
+                        break;
+                    case 4:
+                        tipocarnet.setText("C");
+                        break;
+                    case 5:
+                        tipocarnet.setText("D");
+                        break;
+                    case 6:
+                        tipocarnet.setText("E");
+                        break;
+                    case 9:
+                        tipocarnet.setText("Z");
+
+                }
+                primer = false;
             } else {
                 Toast.makeText(getApplicationContext(),tipoVehiculo.toString(),Toast.LENGTH_SHORT).show();
+
+            }
+        } else {
+            if (result instanceof Result.Success){
+
+                Intent intent = new Intent();
+                setResult(RESULT_OK);
+                finish();
+            } else {
+                Toast.makeText(getApplicationContext(),"Insercion erronea",Toast.LENGTH_SHORT).show();
             }
         }
     }

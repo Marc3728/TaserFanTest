@@ -116,7 +116,6 @@ public class EmpleadoLoggedd extends BaseActivity implements CallInterface, View
                         intent.putExtra("matr",vehiculos.get(viewHolder.getAdapterPosition()).getMatricula());
                         intent.putExtra("tip",vehiculos.get(viewHolder.getAdapterPosition()).getTipo().toString());
                         startActivityForResult(intent,UPDT_CODE);
-                        finish();
                 }
             }
         };
@@ -130,6 +129,12 @@ public class EmpleadoLoggedd extends BaseActivity implements CallInterface, View
                 startActivityForResult(intent,MIUB_CODE);
             }
         });
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
         executeCall(this);
     }
 
@@ -171,7 +176,11 @@ public class EmpleadoLoggedd extends BaseActivity implements CallInterface, View
 
     @Override
     public void onClick(View view) {
-
+        Vehiculo vp = vehiculos.get(recyclerView.getChildAdapterPosition(view));
+        Intent intent = new Intent(getApplicationContext(),DatosVehiculoEspecifico.class);
+        intent.putExtra("matr",vp.getMatricula());
+        intent.putExtra("tip",vp.getTipo().toString());
+        startActivity(intent);
     }
 
     @Override
@@ -180,7 +189,14 @@ public class EmpleadoLoggedd extends BaseActivity implements CallInterface, View
         if (requestCode==MIUB_CODE){
             if (resultCode==RESULT_OK){
                 matricula = data.getStringExtra("matricula");
-                Toast.makeText(getApplicationContext(),"matricula:" + matricula,Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(),"Se ha insertado el vehiculo:" + matricula,Toast.LENGTH_SHORT).show();
+            } else if(resultCode==RESULT_CANCELED){
+
+            }
+        } else if (requestCode==UPDT_CODE){
+            if (resultCode==RESULT_OK){
+
+                Toast.makeText(getApplicationContext(),"Se ha updateado el vehiculo:",Toast.LENGTH_SHORT).show();
             } else if(resultCode==RESULT_CANCELED){
 
             }

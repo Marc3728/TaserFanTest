@@ -7,7 +7,7 @@
     tools:context=".DatosVehiculoEspecifico">
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/imginfoo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -22,9 +22,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
-        app:layout_constraintStart_toEndOf="@+id/imageView2"
-        app:layout_constraintTop_toTopOf="@+id/imageView2" />
+        app:layout_constraintBottom_toBottomOf="@+id/imginfoo"
+        app:layout_constraintStart_toEndOf="@+id/imginfoo"
+        app:layout_constraintTop_toTopOf="@+id/imginfoo" />
 
     <TextView
         android:id="@+id/marcainfo"
@@ -61,11 +61,12 @@
         android:id="@+id/phinfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="20dp"
         android:text="PrecioHora"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+        app:layout_constraintEnd_toEndOf="@+id/fechaadqinfo"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/fechaadqinfo"
+        app:layout_constraintTop_toBottomOf="@+id/fechaadqinfo" />
 
     <TextView
         android:id="@+id/prhrinfo"
@@ -78,7 +79,7 @@
         app:layout_constraintTop_toTopOf="@+id/phinfo" />
 
     <TextView
-        android:id="@+id/batrinfo"
+        android:id="@+id/batrtxxx"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -88,14 +89,14 @@
         app:layout_constraintTop_toTopOf="@+id/prhrinfo" />
 
     <TextView
-        android:id="@+id/textView8"
+        android:id="@+id/batrinfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="@+id/batrinfo"
-        app:layout_constraintStart_toEndOf="@+id/batrinfo"
-        app:layout_constraintTop_toTopOf="@+id/batrinfo"
+        app:layout_constraintBottom_toBottomOf="@+id/batrtxxx"
+        app:layout_constraintStart_toEndOf="@+id/batrtxxx"
+        app:layout_constraintTop_toTopOf="@+id/batrtxxx"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
@@ -109,22 +110,24 @@
         app:layout_constraintTop_toBottomOf="@+id/textauxun" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/estticon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/matriculainfo"
-        app:layout_constraintEnd_toEndOf="@+id/matriculainfo"
-        app:layout_constraintStart_toStartOf="@+id/matriculainfo"
+        android:layout_marginStart="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/marcainfo"
+        app:layout_constraintStart_toEndOf="@+id/marcainfo"
+        app:layout_constraintTop_toTopOf="@+id/marcainfo"
         app:srcCompat="@drawable/ic_baseline_circle_24" />
 
     <TextView
         android:id="@+id/textauxun"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:text="TextView"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="196dp" />
+        app:layout_constraintEnd_toEndOf="@+id/phinfo"
+        app:layout_constraintStart_toStartOf="@+id/phinfo"
+        app:layout_constraintTop_toBottomOf="@+id/phinfo" />
 
     <TextView
         android:id="@+id/auxuninfo"
