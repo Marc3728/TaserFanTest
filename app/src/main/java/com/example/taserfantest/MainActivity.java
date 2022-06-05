@@ -47,7 +47,7 @@ public class MainActivity extends BaseActivity implements CallInterface {
     @Override
     public void doInBackground() {
 
-        result = Connector.getConector().post(Empleado.class,new Empleado("null","null","null","pepa@mordor.es","1111"),"/authemp");
+        result = Connector.getConector().post(Empleado.class,new Empleado("null","null","null",correo.getText().toString(),contrasena.getText().toString()),"/authemp");
     }
 
     @Override
