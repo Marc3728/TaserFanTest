@@ -2,6 +2,7 @@ package com.example.taserfantest;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -32,6 +33,7 @@ public class UpdatearVehiculo extends BaseActivity implements CallInterface {
     private TextView auxdost;
     private String colorsel;
     private TextView matricula;
+    private TextView matriculat;
     private TextView preciohora;
     private TextView marca;
     private TextView descripcion;
@@ -40,6 +42,7 @@ public class UpdatearVehiculo extends BaseActivity implements CallInterface {
     private Spinner estados;
     private String estadosel;
     private TextView tipocarnet;
+    private TextView infoarriba;
     private String matr;
     private String tip;
     private boolean primer;
@@ -61,7 +64,6 @@ public class UpdatearVehiculo extends BaseActivity implements CallInterface {
         auxdost = findViewById(R.id.auxdostxtu);
         anadirv = findViewById(R.id.updatearvehiculou);
         cancelarv = findViewById(R.id.cancelaranadirvehiculou);
-        matricula = findViewById(R.id.matriculatxtu);
         preciohora = findViewById(R.id.phtxtu);
         marca = findViewById(R.id.marcatxtu);
         descripcion = findViewById(R.id.desctxtu);
@@ -70,6 +72,10 @@ public class UpdatearVehiculo extends BaseActivity implements CallInterface {
         tipocarnet = findViewById(R.id.tipocarnettxtu);
         matr = getIntent().getExtras().getString("matr");
         tip = getIntent().getExtras().getString("tip");
+
+        infoarriba = findViewById(R.id.infouppdd);
+        infoarriba.setText("Updateando "+matr);
+
         switch (tip){
             case "COCHE":
                 auxuno.setText("NumPlazas");
@@ -84,6 +90,7 @@ public class UpdatearVehiculo extends BaseActivity implements CallInterface {
             case "BICICLETA":
                 auxuno.setText("tipo");
                 auxdos.setVisibility(View.GONE);
+                auxdost.setVisibility(View.GONE);
                 tipoVehiculo = TipoVehiculo.BICICLETA;
                 break;
             case "PATINETE":
@@ -126,7 +133,9 @@ public class UpdatearVehiculo extends BaseActivity implements CallInterface {
         anadirv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                executeCall(UpdatearVehiculo.this);
+                if (!matricula.getText().toString().equals("") && !preciohora.getText().toString().equals("") && !marca.getText().toString().equals("") && !descripcion.getText().toString().equals("") && !bateria.getText().toString().equals("") && !fechaadq.getText().toString().equals("") && !tipocarnet.getText().toString().equals("") && !auxunot.getText().toString().equals("")){
+                    executeCall(UpdatearVehiculo.this);
+                }
             }
         });
 
@@ -159,19 +168,19 @@ public class UpdatearVehiculo extends BaseActivity implements CallInterface {
         } else {
             switch (tipoVehiculo){
                 case COCHE:
-                    Coche cop = new Coche(matricula.getText().toString(),Double.parseDouble(preciohora.getText().toString()),marca.getText().toString(),descripcion.getText().toString(),colorsel,Double.parseDouble(bateria.getText().toString()),fechaadq.getText().toString(),estadosel,tipocarnet.getText().toString(),Integer.parseInt(auxunot.getText().toString()),Integer.parseInt(auxdost.getText().toString()));
+                    Coche cop = new Coche(matr,Double.parseDouble(preciohora.getText().toString()),marca.getText().toString(),descripcion.getText().toString(),colorsel,Double.parseDouble(bateria.getText().toString()),fechaadq.getText().toString(),estadosel,tipocarnet.getText().toString(),Integer.parseInt(auxunot.getText().toString()),Integer.parseInt(auxdost.getText().toString()));
                     result = Connector.getConector().put(Coche.class,cop,"/coche");
                     break;
                 case MOTO:
-                    Moto mop = new Moto(matricula.getText().toString(),Double.parseDouble(preciohora.getText().toString()),marca.getText().toString(),descripcion.getText().toString(),colorsel,Double.parseDouble(bateria.getText().toString()),fechaadq.getText().toString(),estadosel,tipocarnet.getText().toString(),Double.parseDouble(auxunot.getText().toString()),Double.parseDouble(auxdost.getText().toString()));
+                    Moto mop = new Moto(matr,Double.parseDouble(preciohora.getText().toString()),marca.getText().toString(),descripcion.getText().toString(),colorsel,Double.parseDouble(bateria.getText().toString()),fechaadq.getText().toString(),estadosel,tipocarnet.getText().toString(),Double.parseDouble(auxunot.getText().toString()),Double.parseDouble(auxdost.getText().toString()));
                     result = Connector.getConector().put(Moto.class,mop,"/moto");
                     break;
                 case BICICLETA:
-                    Bicicleta bip = new Bicicleta(matricula.getText().toString(),Double.parseDouble(preciohora.getText().toString()),marca.getText().toString(),descripcion.getText().toString(),colorsel,Double.parseDouble(bateria.getText().toString()),fechaadq.getText().toString(),estadosel,tipocarnet.getText().toString(),auxunot.getText().toString());
+                    Bicicleta bip = new Bicicleta(matr,Double.parseDouble(preciohora.getText().toString()),marca.getText().toString(),descripcion.getText().toString(),colorsel,Double.parseDouble(bateria.getText().toString()),fechaadq.getText().toString(),estadosel,tipocarnet.getText().toString(),auxunot.getText().toString());
                     result = Connector.getConector().put(Bicicleta.class,bip,"/bicicleta");
                     break;
                 case PATINETE:
-                    Patinete pap = new Patinete(matricula.getText().toString(),Double.parseDouble(preciohora.getText().toString()),marca.getText().toString(),descripcion.getText().toString(),colorsel,Double.parseDouble(bateria.getText().toString()),fechaadq.getText().toString(),estadosel,tipocarnet.getText().toString(),Double.parseDouble(auxunot.getText().toString()),Integer.parseInt(auxdost.getText().toString()));
+                    Patinete pap = new Patinete(matr,Double.parseDouble(preciohora.getText().toString()),marca.getText().toString(),descripcion.getText().toString(),colorsel,Double.parseDouble(bateria.getText().toString()),fechaadq.getText().toString(),estadosel,tipocarnet.getText().toString(),Double.parseDouble(auxunot.getText().toString()),Integer.parseInt(auxdost.getText().toString()));
                     result = Connector.getConector().put(Patinete.class,pap,"/patinete");
             }
         }
@@ -184,8 +193,6 @@ public class UpdatearVehiculo extends BaseActivity implements CallInterface {
                 switch (tipoVehiculo){
                     case COCHE:
                         Coche resultadoc = (Coche) ((Result.Success<?>) result).getData();
-                        Toast.makeText(getApplicationContext(),resultadoc.getTipocarnet(),Toast.LENGTH_SHORT).show();
-                        matricula.setText(resultadoc.getMatricula());
                         preciohora.setText(String.valueOf(resultadoc.getPreciohora()));
                         marca.setText(resultadoc.getMarca());
                         color = Arrays.stream(Colores.values()).filter(colores1 -> colores1.toString().equals(resultadoc.getColor())).collect(Collectors.toList()).get(0);
@@ -201,8 +208,7 @@ public class UpdatearVehiculo extends BaseActivity implements CallInterface {
                         break;
                     case MOTO:
                         Moto resultadom = (Moto) ((Result.Success<?>) result).getData();
-                        Toast.makeText(getApplicationContext(),resultadom.getTipocarnet(),Toast.LENGTH_SHORT).show();
-                        matricula.setText(resultadom.getMatricula());
+
                         preciohora.setText(String.valueOf(resultadom.getPreciohora()));
                         marca.setText(resultadom.getMarca());
                         color = Arrays.stream(Colores.values()).filter(colores1 -> colores1.toString().equals(resultadom.getColor())).collect(Collectors.toList()).get(0);
@@ -218,8 +224,7 @@ public class UpdatearVehiculo extends BaseActivity implements CallInterface {
                         break;
                     case BICICLETA:
                         Bicicleta resultadob = (Bicicleta) ((Result.Success<?>) result).getData();
-                        Toast.makeText(getApplicationContext(),resultadob.getTipocarnet(),Toast.LENGTH_SHORT).show();
-                        matricula.setText(resultadob.getMatricula());
+
                         preciohora.setText(String.valueOf(resultadob.getPreciohora()));
                         marca.setText(resultadob.getMarca());
                         color = Arrays.stream(Colores.values()).filter(colores1 -> colores1.toString().equals(resultadob.getColor())).collect(Collectors.toList()).get(0);
@@ -234,8 +239,7 @@ public class UpdatearVehiculo extends BaseActivity implements CallInterface {
                         break;
                     case PATINETE:
                         Patinete resultadop = (Patinete) ((Result.Success<?>) result).getData();
-                        Toast.makeText(getApplicationContext(),"hola",Toast.LENGTH_SHORT).show();
-                        matricula.setText(resultadop.getMatricula());
+
                         preciohora.setText(String.valueOf(resultadop.getPreciohora()));
                         marca.setText(resultadop.getMarca());
                         color = Arrays.stream(Colores.values()).filter(colores1 -> colores1.toString().equals(resultadop.getColor())).collect(Collectors.toList()).get(0);
@@ -287,7 +291,11 @@ public class UpdatearVehiculo extends BaseActivity implements CallInterface {
                 setResult(RESULT_OK);
                 finish();
             } else {
-                Toast.makeText(getApplicationContext(),"Insercion erronea",Toast.LENGTH_SHORT).show();
+                AlertDialog.Builder builder = new AlertDialog.Builder(UpdatearVehiculo.this);
+                Result.Error error = (Result.Error) result;
+                builder.setMessage("Error message: "+error.getMessage()).setTitle("Error Insert").setPositiveButton("Vale",null);
+                AlertDialog alertDialog = builder.create();
+                alertDialog.show();
             }
         }
     }

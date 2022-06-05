@@ -1,5 +1,6 @@
 package com.example.taserfantest;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -129,22 +130,7 @@ public class InsertarVehiculo extends BaseActivity implements CallInterface {
 //                Intent intent = new Intent();
 //                setResult(RESULT_OK);
 //                finish();
-                if (!matricula.getText().toString().equals("") && !preciohora.getText().toString().equals("") && !marca.getText().toString().equals("") && !descripcion.getText().toString().equals("") && !bateria.getText().toString().equals("") && !fechaadq.getText().toString().equals("") && !tipocarnet.getText().toString().equals("")){
-                    /*Intent intent = new Intent();
-                    intent.putExtra("matriculai",matricula.getText().toString());
-                    intent.putExtra("preciohorai",preciohora.getText().toString());
-                    intent.putExtra("marcai",marca.getText().toString());
-                    intent.putExtra("colori",colorsel);
-                    intent.putExtra("descripcioni",descripcion.getText().toString());
-                    intent.putExtra("bateriai",bateria.getText().toString());
-                    intent.putExtra("fechaadqi",fechaadq.getText().toString());
-                    intent.putExtra("estadoi",estadosel);
-                    intent.putExtra("tipocarneti",tipocarnet.getText().toString());
-                    intent.putExtra("auxuno",auxunot.getText().toString());
-                    intent.putExtra("auxdos",auxdost.getText().toString());
-                    intent.putExtra("tiposel",seleccionado.toString());
-                    setResult(RESULT_OK);
-                    finish();*/
+                if (!matricula.getText().toString().equals("") && !preciohora.getText().toString().equals("") && !marca.getText().toString().equals("") && !descripcion.getText().toString().equals("") && !bateria.getText().toString().equals("") && !fechaadq.getText().toString().equals("") && !tipocarnet.getText().toString().equals("") && !auxunot.getText().toString().equals("")){
                     executeCall(InsertarVehiculo.this);
                 }
             }
@@ -187,7 +173,11 @@ public class InsertarVehiculo extends BaseActivity implements CallInterface {
             setResult(RESULT_OK);
             finish();
         } else {
-            Toast.makeText(getApplicationContext(),"Insercion erronea",Toast.LENGTH_SHORT).show();
+            AlertDialog.Builder builder = new AlertDialog.Builder(InsertarVehiculo.this);
+            Result.Error error = (Result.Error) result;
+            builder.setMessage("Error message: "+error.getMessage()).setTitle("Error Insert").setPositiveButton("Vale",null);
+            AlertDialog alertDialog = builder.create();
+            alertDialog.show();
         }
     }
 }

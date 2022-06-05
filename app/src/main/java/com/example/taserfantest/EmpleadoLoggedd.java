@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -53,6 +54,9 @@ public class EmpleadoLoggedd extends BaseActivity implements CallInterface, View
     private String auxun;
     private String auxdos;
 
+    private TextView matriculabuscar;
+    private ImageView botonbuscador;
+
     private Vehiculo vehiculoeliminar;
     private EliminaVehiuclo eliminaVehiuclo;
 
@@ -64,6 +68,8 @@ public class EmpleadoLoggedd extends BaseActivity implements CallInterface, View
         spinner = findViewById(R.id.spinnertipo);
         tipoVehiculo = TipoVehiculo.TODOS;
         anadirvehiculo = findViewById(R.id.anadirvehiculo);
+        matriculabuscar = findViewById(R.id.matriculabuscador);
+        botonbuscador = findViewById(R.id.botonbuscador);
         eliminaVehiuclo = new EliminaVehiuclo();
         vehiculos = new ArrayList<Vehiculo>();
         myRecyclerViewAdapter = new MyRecyclerViewAdapter(this, vehiculos);
@@ -130,6 +136,31 @@ public class EmpleadoLoggedd extends BaseActivity implements CallInterface, View
             }
         });
 
+        botonbuscador.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (matriculabuscar.getText().toString().equals("")){
+                    myRecyclerViewAdapter.notifyData(vehiculos);
+                } else {
+                    List<Vehiculo> listab = vehiculos.stream().filter(vehiculo -> compMatriculas(matriculabuscar.getText().toString().toUpperCase(),vehiculo.getMatricula().toUpperCase())).collect(Collectors.toList());
+                    myRecyclerViewAdapter.notifyData(listab);
+                }
+            }
+        });
+
+    }
+
+    public boolean compMatriculas(String matd,String mats){
+        int i = matd.length();
+        int b = 0;
+        boolean correcto = true;
+        while (correcto==true && b<i){
+            if (matd.charAt(b)!=mats.charAt(b)){
+                correcto=false;
+            }
+            b++;
+        }
+        return correcto;
     }
 
     @Override

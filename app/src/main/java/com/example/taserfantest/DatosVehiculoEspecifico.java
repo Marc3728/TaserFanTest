@@ -69,6 +69,7 @@ public class DatosVehiculoEspecifico extends BaseActivity implements CallInterfa
             case "BICICLETA":
                 auxuno.setText("tipo");
                 auxdos.setVisibility(View.GONE);
+                auxdost.setVisibility(View.GONE);
                 tipoVehiculo = TipoVehiculo.BICICLETA;
                 break;
             case "PATINETE":
@@ -107,7 +108,7 @@ public class DatosVehiculoEspecifico extends BaseActivity implements CallInterfa
             switch (tipoVehiculo){
                 case COCHE:
                     Coche resultadoc = (Coche) ((Result.Success<?>) result).getData();
-                    Toast.makeText(getApplicationContext(),resultadoc.getTipocarnet(),Toast.LENGTH_SHORT).show();
+
                     matricula.setText(resultadoc.getMatricula());
                     preciohora.setText(String.valueOf(resultadoc.getPreciohora()));
                     marca.setText(resultadoc.getMarca());
@@ -122,7 +123,7 @@ public class DatosVehiculoEspecifico extends BaseActivity implements CallInterfa
                     break;
                 case MOTO:
                     Moto resultadom = (Moto) ((Result.Success<?>) result).getData();
-                    Toast.makeText(getApplicationContext(),resultadom.getTipocarnet(),Toast.LENGTH_SHORT).show();
+
                     matricula.setText(resultadom.getMatricula());
                     preciohora.setText(String.valueOf(resultadom.getPreciohora()));
                     marca.setText(resultadom.getMarca());
@@ -137,7 +138,7 @@ public class DatosVehiculoEspecifico extends BaseActivity implements CallInterfa
                     break;
                 case BICICLETA:
                     Bicicleta resultadob = (Bicicleta) ((Result.Success<?>) result).getData();
-                    Toast.makeText(getApplicationContext(),resultadob.getTipocarnet(),Toast.LENGTH_SHORT).show();
+
                     matricula.setText(resultadob.getMatricula());
                     preciohora.setText(String.valueOf(resultadob.getPreciohora()));
                     marca.setText(resultadob.getMarca());
@@ -151,7 +152,7 @@ public class DatosVehiculoEspecifico extends BaseActivity implements CallInterfa
                     break;
                 case PATINETE:
                     Patinete resultadop = (Patinete) ((Result.Success<?>) result).getData();
-                    Toast.makeText(getApplicationContext(),"hola",Toast.LENGTH_SHORT).show();
+
                     matricula.setText(resultadop.getMatricula());
                     preciohora.setText(String.valueOf(resultadop.getPreciohora()));
                     marca.setText(resultadop.getMarca());

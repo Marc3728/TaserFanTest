@@ -22,7 +22,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinnertipo" />
+        app:layout_constraintTop_toBottomOf="@+id/matriculabuscador" />
 
     <Spinner
         android:id="@+id/spinnertipo"
@@ -31,4 +31,25 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/matriculabuscador"
+        android:layout_width="362dp"
+        android:layout_height="40dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Matricula"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnertipo" />
+
+    <ImageView
+        android:id="@+id/botonbuscador"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/matriculabuscador"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/matriculabuscador"
+        app:layout_constraintTop_toBottomOf="@+id/spinnertipo"
+        app:srcCompat="@drawable/ic_baseline_search_24" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

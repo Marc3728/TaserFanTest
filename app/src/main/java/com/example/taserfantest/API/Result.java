@@ -16,7 +16,7 @@ public class Result<T> {
             return "Success[data=" + success.getData().toString() + "]";
         } else if (this instanceof Result.Error) {
             Error error = (Error) this;
-            return "Error[exception=" + error.getError() + "]";
+            return "Error[exception=" + error.getMessage() + "]";
         }
         return "";
     }
@@ -44,21 +44,28 @@ public class Result<T> {
     // Error sub-class
     public final static class Error extends Result {
 
-        private String error;
+        private String message;
+        private int code;
 
-        public Error(String error) {
-            this.error = error;
+        public Error(String message, int code) {
+            this.message = message;
+            this.code = code;
         }
 
-        public Error() {
+        public String getMessage() {
+            return message;
         }
 
-        public void setError(String error) {
-            this.error = error;
+        public void setMessage(String message) {
+            this.message = message;
         }
 
-        public String getError() {
-            return this.error;
+        public int getCode() {
+            return code;
+        }
+
+        public void setCode(int code) {
+            this.code = code;
         }
     }
 }

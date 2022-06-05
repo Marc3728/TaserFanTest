@@ -22,6 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:text="TextView"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/imginfoo"
         app:layout_constraintStart_toEndOf="@+id/imginfoo"
         app:layout_constraintTop_toTopOf="@+id/imginfoo" />
@@ -32,6 +33,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:text="TextView"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/matriculainfo"
         app:layout_constraintStart_toEndOf="@+id/matriculainfo"
         app:layout_constraintTop_toTopOf="@+id/matriculainfo" />
@@ -42,6 +44,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text="TextView"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="@+id/matriculainfo"
         app:layout_constraintStart_toStartOf="@+id/matriculainfo"
         app:layout_constraintTop_toBottomOf="@+id/matriculainfo" />
@@ -52,6 +55,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:text="TextView"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/fechaadqinfo"
         app:layout_constraintStart_toEndOf="@+id/fechaadqinfo"
         app:layout_constraintTop_toTopOf="@+id/fechaadqinfo"
