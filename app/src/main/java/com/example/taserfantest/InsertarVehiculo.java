@@ -130,7 +130,7 @@ public class InsertarVehiculo extends BaseActivity implements CallInterface {
 //                Intent intent = new Intent();
 //                setResult(RESULT_OK);
 //                finish();
-                if (!preciohora.getText().toString().equals("") && !marca.getText().toString().equals("") && !descripcion.getText().toString().equals("") && !bateria.getText().toString().equals("") && !fechaadq.getText().toString().equals("") && !tipocarnet.getText().toString().equals("") && !auxunot.getText().toString().equals("")){
+                if (!matricula.getText().toString().equals("") && !preciohora.getText().toString().equals("") && !marca.getText().toString().equals("") && !descripcion.getText().toString().equals("") && !bateria.getText().toString().equals("") && !fechaadq.getText().toString().equals("") && !tipocarnet.getText().toString().equals("") && !auxunot.getText().toString().equals("")){
                     executeCall(InsertarVehiculo.this);
                 }
             }
