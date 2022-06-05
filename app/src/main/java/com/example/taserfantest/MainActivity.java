@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.taserfantest.API.API;
 import com.example.taserfantest.API.Connector;
 import com.example.taserfantest.API.Result;
 import com.example.taserfantest.base.BaseActivity;
@@ -46,7 +47,7 @@ public class MainActivity extends BaseActivity implements CallInterface {
 
     @Override
     public void doInBackground() {
-
+        API.Routes.URL = "http://"+GestionPreferencias.getIP(this)+":"+GestionPreferencias.getPORT(this);
         result = Connector.getConector().post(Empleado.class,new Empleado("null","null","null",correo.getText().toString(),contrasena.getText().toString()),"/authemp");
     }
 
